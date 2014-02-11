@@ -1,0 +1,56 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+# S expansion productions
+S -> S Sbar
+Sbar -> Comp S 
+S -> NP[NUM=?n] VP[NUM=?n]
+S -> NP[NUM=?n] VP[NUM=?n] PUNC
+S -> NP[NUM=?n] VP[NUM=?n] CC NP[NUM=?n] VP[NUM=?n]
+
+# NP expansion productions
+NP[NUM=?n] -> PropN[GND=?n]
+NP[NUM=?n] -> ADJP N[NUM=?n]
+NP[NUM=?n] -> Det[NUM=?n] N[NUM=?n] | Det[NUM=?n] N[NUM=?n] PP | N[NUM=?n]
+NP[NUM=pl] -> N[NUM=pl] | N[NUM=pl] PP
+
+
+# ADJP expansion productions
+ADJP -> JJ[NUM=?n]
+
+# VP expansion productions
+VP[TENSE=?t, NUM=?n] -> IV[TENSE=?t, NUM=?n] | IV[TENSE=?t, NUM=?n] PP
+VP[TENSE=?t, NUM=?n] -> TV[TENSE=?t, NUM=?n] NP | TV[TENSE=?t, NUM=?n] PRP[GND=?n] | TV[TENSE=?t, NUM=?n] NP[NUM=?n] PP
+VP[TENSE=?t, NUM=?n] -> DTV[TENSE=past, NUM=sg]
+VP[TENSE=?t, NUM=?n] -> TV[TENSE=?t, NUM=?n] ADJP
+# filled can be ditransitive..
+# PP expansion productions
+PP -> Prep NP[NUM=?n] | Prep 
+
+# ###################
+# Lexical Productions
+# ###################
+Det[NUM=sg] -> 'this' | 'every'
+PUNC -> '.' | '?'
+Det[NUM=pl] -> 'these' | 'all'
+Det -> 'the' | 'some' | 'several'
+PropN[NUM=sg]-> 'Kim' | 'Jody'
+PropN[GND=fem, NUM=sg] -> 'Mary'
+PropN[GND=mas, NUM=sg] -> 'John'
+PRP[GND=mas, NUM=sg] -> 'himself' 
+PRP[GND=fem, NUM=sg] -> 'herself'
+JJ[NUM=pl] -> 'five' | 'interesting'
+N[NUM=sg] -> 'dog' | 'girl' | 'car' | 'child' | 'dog' | 'farmer' | 'cart' | 'sand' | 'summit' | 'Tuesday' | 'book' | 'shelf'
+N[NUM=pl] -> 'dogs' | 'girls' | 'cars' | 'children' | 'cats' | 'dogs' | 'minutes'
+IV[TENSE=pres,  NUM=sg] -> 'disappears' | 'walks' | 'barks'
+TV[TENSE=pres, NUM=sg] -> 'sees' | 'likes' | 'does' | 'know'
+IV[TENSE=pres,  NUM=pl] -> 'disappear' | 'walk' | 'bark'  
+TV[TENSE=pres, NUM=pl] -> 'see' | 'like'
+IV[TENSE=past] -> 'disappeared' | 'walked' | 'thought' 
+TV[TENSE=past] -> 'saw' | 'liked' | 'filled' | 'loaded' | 'reached' | 'was' |
+# you may wanna fix "was"
+Prep -> 'with' | 'into' | 'on' | 'for' 
+Comp -> 'that'
+Wh -> 'what'
+# for can also be a coordinating conjunction.
