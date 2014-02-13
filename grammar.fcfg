@@ -1,0 +1,52 @@
+## Feature-Based Grammar
+##
+## Author: Haotian He
+
+% start S
+# ###################
+# Grammar Productions
+# ###################
+S[-INV, TENSE=?t] -> NP[NUM=?n] VP[NUM=?n, TENSE=?t] PUNC
+S[-INV]/?x -> NP VP/?x PUNC
+S[-INV] -> NP S/NP PUNC
+S[+INV] -> V[+AUX] NP VP PUNC
+S[+INV]/?x -> V[+AUX] NP VP/?x PUNC
+SBar[NUM=?n, TENSE=?t] -> Comp S[NUM=?n, TENSE=?t, -INV]
+SBar/?x -> Comp S[-INV]/?x
+
+NP[NUM=?n] -> Det[NUM=?n] N[NUM=?n]
+NP[NUM=?n] -> N[NUM=?n]
+NP[NUM=?n] -> PropN[NUM=?n]
+
+VP[NUM=?n, TENSE=?t] -> V[SUBCAT=intrans, NUM=?n, TENSE=?t, -AUX]
+VP -> V[SUBCAT=trans, -AUX] NP
+VP -> V[SUBCAT=trans, -AUX] ADJP
+VP/?x -> V[SUBCAT=trans, -AUX] NP/?x
+VP[NUM=?n, TENSE=?t] -> V[SUBCAT=clause, NUM=?n, TENSE=?t, -AUX] SBar
+VP/?x -> V[SUBCAT=clause, -AUX] SBar/?x
+VP -> V[+AUX] VP
+VP/?x -> V[+AUX] VP/?x
+
+ADJP -> JJ
+
+# ###################
+# Lexical Productions
+# ###################
+
+V[SUBCAT=intrans, NUM=sg, TENSE=pres, -AUX] -> 'barks'
+V[SUBCAT=intrans, NUM=pl, TENSE=pres, -AUX] -> 'bark' 
+V[SUBCAT=trans, NUM=sg, TENSE=past, -AUX] -> 'was'
+V[SUBCAT=clause, NUM=sg, TENSE=past, -AUX] -> 'thought'
+V[+AUX] -> 'do' | 'can'
+
+Det -> 'the'
+N[NUM=sg, -WH] -> 'dog' | 'book'
+N[NUM=pl, -WH] -> 'dogs' | 'cats'
+N[+WH] -> 'what'
+PropN[NUM=sg] -> 'John'
+NP/NP ->
+Comp -> 'that'
+
+JJ -> 'interesting'
+
+PUNC -> '.'
