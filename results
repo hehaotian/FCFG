@@ -1,0 +1,158 @@
+(S[-INV]
+  (NP[NUM='pl', SEM=?s] (Det[] the) (N[NUM='pl'] dogs))
+  (VP[-INV, NUM='pl', TENSE='pres']
+    (IV[-INV, NUM='pl', TENSE='pres'] bark))
+  (PUNC[] .))
+(S[-INV]
+  (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] dog))
+  (VP[-INV, NUM='sg', TENSE='pres']
+    (IV[-INV, NUM='sg', TENSE='pres'] barks))
+  (PUNC[] .))
+
+
+
+(S[-INV]
+  (NP[NUM='pl', SEM=?s] (N[NUM='pl'] dogs))
+  (VP[-INV, NUM='pl', TENSE='pres']
+    (IV[-INV, NUM='pl', TENSE='pres'] bark))
+  (PUNC[] .))
+
+(S[-INV]
+  (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+  (VP[NUM='sg', TENSE='past']
+    (IV[TENSE='past'] thought)
+    (SBAR[NUM='sg', TENSE='past']
+      (IN[] that)
+      (CL[NUM='sg', TENSE='past']
+        (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] book))
+        (VP[NUM=?n, TENSE='past']
+          (CP[TENSE='past'] was)
+          (ADJP[] (JJ[] interesting))))))
+  (PUNC[] .))
+
+
+(S[-INV]
+  (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+  (VP[-INV, NUM='sg', TENSE='past']
+    (TVP[-INV, NUM='sg', TENSE='past'] put)
+    (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] book))
+    (PP[]
+      (IN[] on)
+      (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] shelf))))
+  (PUNC[] .))
+(S[+INV]
+  (V[+AUX, TENSE='past'] did)
+  (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+  (VP[+INV, NUM='sg', TENSE='past']
+    (TVP[+INV, NUM='sg', TENSE='past'] put)
+    (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] book))
+    (PP[]
+      (IN[] on)
+      (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] shelf))))
+  (PUNC[] ?))
+
+(S[-INV]
+  (WP[+WH] (N[+WH] what))
+  (S[+INV]/NP[]
+    (V[+AUX, TENSE='past'] did)
+    (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+    (VP[+INV]/NP[]
+      (TVP[+INV, NUM='sg', TENSE='past'] put)
+      (PP[]
+        (IN[] on)
+        (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] shelf))))
+    (PUNC[] ?)))
+
+(S[-INV]
+  (WP[+WH] (N[+WH] what))
+  (S[+INV]/NP[]
+    (V[+AUX, NUM='sg', TENSE='pres'] does)
+    (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+    (VP[+INV]/NP[] (TV[+INV, NUM='sg', TENSE='pres'] know))
+    (PUNC[] ?)))
+(S[-INV]
+  (WP[+WH] (N[+WH] what))
+  (S[+INV]/NP[]
+    (V[+AUX, NUM='sg', TENSE='pres'] does)
+    (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+    (VP[+INV, NUM='sg', TENSE='pres']/NP[]
+      (IV[+INV, NUM='sg', TENSE='pres'] think)
+      (SBAR[-INV]/NP[]
+        (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+        (VP[-INV, NUM='sg', TENSE='pres']/NP[]
+          (TV[-INV, NUM='sg', TENSE='pres'] knows))))
+    (PUNC[] ?)))
+(S[-INV]
+  (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] farmer))
+  (VP[INV=?i, NUM=?n, TENSE='past']
+    (TVP[TENSE='past'] loaded)
+    (NP[NUM='sg', SEM='notsand']
+      (Det[] the)
+      (N[NUM='sg', SEM='notsand'] cart))
+    (PP[]
+      (IN[] with)
+      (NP[NUM='unc', SEM='sand'] (N[NUM='unc', SEM='sand'] sand))))
+  (PUNC[] .))
+(S[-INV]
+  (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] farmer))
+  (VP[INV=?i, NUM=?n, TENSE='past']
+    (TVP[TENSE='past'] loaded)
+    (NP[NUM='unc', SEM='sand'] (N[NUM='unc', SEM='sand'] sand))
+    (PP[]
+      (IN[] into)
+      (NP[NUM='sg', SEM='notsand']
+        (Det[] the)
+        (N[NUM='sg', SEM='notsand'] cart))))
+  (PUNC[] .))
+
+(S[-INV]
+  (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] farmer))
+  (VP[INV=?i, NUM=?n, TENSE='past']
+    (TVP[SEM='notsand', TENSE='past'] filled)
+    (NP[NUM='sg', SEM='notsand']
+      (Det[] the)
+      (N[NUM='sg', SEM='notsand'] cart))
+    (PP[]
+      (IN[] with)
+      (NP[NUM='unc', SEM='sand'] (N[NUM='unc', SEM='sand'] sand))))
+  (PUNC[] .))
+(S[-INV]
+  (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+  (VP[GND='fem', NUM=?n, TENSE='past']
+    (TV[TENSE='past'] saw)
+    (RPN[GND='fem', NUM='sg'] herself))
+  (PUNC[] .))
+
+(S[-INV]
+  (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+  (VP[GND='mas', NUM=?n, TENSE='past']
+    (TV[TENSE='past'] saw)
+    (RPN[GND='mas', NUM='sg'] himself))
+  (PUNC[] .))
+(S[-INV]
+  (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+  (VP[NUM=?n, TENSE='past']
+    (TVP[NUM=?n, SEM='notshort', TENSE='past']
+      (TV[SEM='notshort', TENSE='past'] reached)
+      (NP[NUM='sg', SEM=?s] (Det[] the) (N[NUM='sg'] summit)))
+    (TPP[SEM=?s]
+      (TIN[] on)
+      (TNP[NUM='unc', SEM=?s] (TN[NUM='unc', PPW='on'] Tuesday))))
+  (PUNC[] .))
+
+(S[-INV]
+  (NP[GND='mas', NUM='sg'] (PropN[GND='mas', NUM='sg'] John))
+  (VP[NUM=?n, TENSE='past']
+    (IVP[TENSE='past'] walked)
+    (TPP[SEM=?s]
+      (TIN[] on)
+      (TNP[NUM='unc', SEM=?s] (TN[NUM='unc', PPW='on'] Tuesday))))
+  (PUNC[] .))
+(S[-INV]
+  (NP[GND='fem', NUM='sg'] (PropN[GND='fem', NUM='sg'] Mary))
+  (VP[NUM=?n, TENSE='past']
+    (IVP[TENSE='past'] walked)
+    (TPP[SEM='short']
+      (TIN[SEM='short'] for)
+      (TNP[SEM=?s] (JJ[] five) (TN[NUM='pl', PPW='in'] minutes))))
+  (PUNC[] .))

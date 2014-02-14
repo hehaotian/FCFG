@@ -1,52 +1,98 @@
 ## Feature-Based Grammar
 ##
 ## Author: Haotian He
+## Created by February 10, 2014
 
 % start S
-# ###################
-# Grammar Productions
-# ###################
-S[-INV, TENSE=?t] -> NP[NUM=?n] VP[NUM=?n, TENSE=?t] PUNC
-S[-INV]/?x -> NP VP/?x PUNC
-S[-INV] -> NP S/NP PUNC
-S[+INV] -> V[+AUX] NP VP PUNC
-S[+INV]/?x -> V[+AUX] NP VP/?x PUNC
-SBar[NUM=?n, TENSE=?t] -> Comp S[NUM=?n, TENSE=?t, -INV]
-SBar/?x -> Comp S[-INV]/?x
+############################
+# Grammar Rules:
+############################
 
-NP[NUM=?n] -> Det[NUM=?n] N[NUM=?n]
-NP[NUM=?n] -> N[NUM=?n]
-NP[NUM=?n] -> PropN[NUM=?n]
+S[-INV] -> NP[NUM=?n,GND=?g] VP[-INV,NUM=?n,GND=?g] PUNC
+S[+INV] -> V[+AUX] NP VP[+INV] PUNC
+S[-INV] -> WP S[+INV]/NP
+S[+INV]/NP -> V[+AUX] NP[NUM=?n,TENSE=?t] VP[+INV,NUM=?n,TENSE=?t]/NP PUNC
 
-VP[NUM=?n, TENSE=?t] -> V[SUBCAT=intrans, NUM=?n, TENSE=?t, -AUX]
-VP -> V[SUBCAT=trans, -AUX] NP
-VP -> V[SUBCAT=trans, -AUX] ADJP
-VP/?x -> V[SUBCAT=trans, -AUX] NP/?x
-VP[NUM=?n, TENSE=?t] -> V[SUBCAT=clause, NUM=?n, TENSE=?t, -AUX] SBar
-VP/?x -> V[SUBCAT=clause, -AUX] SBar/?x
-VP -> V[+AUX] VP
-VP/?x -> V[+AUX] VP/?x
+NP[GND=?g,NUM=?n] -> PropN[GND=?g,NUM=?n]
+NP[NUM=?n,SEM=?s] -> Det[NUM=?n]  N[NUM=?n,SEM=?s]
+NP[NUM=pl,SEM=?s] -> N[NUM=pl,SEM=?s]
+NP[NUM=unc,SEM=?s] -> N[NUM=unc,SEM=?s]
+NP[NUM=unc,SEM=?s] -> JJ N[NUM=unc,SEM=?s]
+TNP[SEM=?s] -> JJ TN[SEM=?s]
+TNP[NUM=unc,SEM=?s] -> TN[NUM=unc,SEM=?s]
+
+WP[+WH] -> N[+WH]
+
+VP[INV=?i,TENSE=?t,NUM=?n] -> IV[INV=?i,TENSE=?t,NUM=?n]
+VP[TENSE=?t,NUM=?n] -> TV[TENSE=?t,NUM=?n] NP
+VP[TENSE=?t,NUM=?n,GND=?g] -> TV[TENSE=?t,NUM=?n] RPN[GND=?g]
+
+VP[TENSE=?t,NUM=?n] -> IVP[TENSE=?t,NUM=?n] TPP
+VP[TENSE=?t,NUM=?n] -> TVP[TENSE=?t,NUM=?n,SEM=?s] TPP[SEM=?s]
+TVP[TENSE=?t,NUM=?n,SEM=?s] -> TV[TENSE=?t,NUM=?n,SEM=?s] NP
+
+VP[INV=?i,TENSE=?t,NUM=?n] -> TVP[INV=?i,TENSE=?t,NUM=?n,SEM=?s] NP[SEM=?s] PP
+
+VP[TENSE=?t,NUM=?n] -> CP[TENSE=?t,NUM=?n] ADJP
+VP[TENSE=?t,NUM=?n] -> IV[TENSE=?t,NUM=?n] SBAR[TENSE=?t,NUM=?n]
+
+VP[+INV]/NP -> TVP[+INV] PP
+VP[+INV]/NP -> TV[+INV]
+VP[+INV,NUM=?n,TENSE=?t]/NP -> IV[+INV,NUM=?n,TENSE=?t] SBAR[-INV,TENSE=?t]/NP
+VP[TENSE=?t,NUM=?n,-INV]/NP -> TV[TENSE=?t,NUM=?n,-INV]
+
+SBAR[TENSE=?t,NUM=?n] -> IN CL[TENSE=?t,NUM=?n]
+CL[TENSE=?t,NUM=?n] -> NP[NUM=?n] VP[TENSE=?t,NUM=?n]
+SBAR[-INV]/NP -> NP[NUM=?n] VP[TENSE=?t,NUM=?n,-INV]/NP
+
+PP -> IN NP
+TPP[SEM=?s] -> TIN[SEM=?s] TNP
 
 ADJP -> JJ
 
-# ###################
-# Lexical Productions
-# ###################
-
-V[SUBCAT=intrans, NUM=sg, TENSE=pres, -AUX] -> 'barks'
-V[SUBCAT=intrans, NUM=pl, TENSE=pres, -AUX] -> 'bark' 
-V[SUBCAT=trans, NUM=sg, TENSE=past, -AUX] -> 'was'
-V[SUBCAT=clause, NUM=sg, TENSE=past, -AUX] -> 'thought'
-V[+AUX] -> 'do' | 'can'
+############################
+# Lexical Rules:
+############################
 
 Det -> 'the'
-N[NUM=sg, -WH] -> 'dog' | 'book'
-N[NUM=pl, -WH] -> 'dogs' | 'cats'
+
+N[NUM=sg] -> 'dog' | 'book' | 'shelf' | 'farmer' | 'summit'
+N[NUM=sg,SEM=notsand] -> 'cart'
+N[NUM=pl] -> 'dogs' | 'cats'
+N[NUM=unc,SEM=sand] -> 'sand'
 N[+WH] -> 'what'
-PropN[NUM=sg] -> 'John'
-NP/NP ->
-Comp -> 'that'
+TN[NUM=pl,PPW=in] -> 'minutes'
+TN[NUM=unc,PPW=on] -> 'Tuesday'
 
-JJ -> 'interesting'
+PropN[GND=fem, NUM=sg] -> 'Mary'
+PropN[GND=mas, NUM=sg] -> 'John'
 
-PUNC -> '.'
+RPN[GND=fem, NUM=sg] -> 'herself'
+RPN[GND=mas, NUM=sg] -> 'himself'
+
+IV[TENSE=pres,NUM=sg,-INV] -> 'barks'
+IV[TENSE=pres,NUM=pl,-INV] -> 'bark'
+IV[TENSE=past] -> 'thought'
+TV[TENSE=pres,NUM=sg,+INV] -> 'know'
+TV[TENSE=pres,NUM=sg,-INV] -> 'knows'
+IV[TENSE=pres,NUM=sg,+INV] -> 'think'
+IVP[TENSE=past] -> 'walked'
+
+
+V[+AUX,TENSE=past] -> 'did' 
+V[+AUX,TENSE=pres,NUM=sg] -> 'does'
+TV[TENSE=past] -> 'saw'
+TV[TENSE=past,SEM=notshort] -> 'reached'
+TVP[TENSE=past,NUM=sg,-INV] -> 'put' 
+TVP[TENSE=past,SEM=notsand] -> 'filled'
+TVP[TENSE=past] -> 'loaded'
+TVP[TENSE=past,NUM=sg,+INV] -> 'put'
+CP[TENSE=past] -> 'was'
+
+JJ -> 'interesting' | 'five'
+
+IN -> 'that' | 'on' | 'with' | 'into'
+TIN -> 'on'
+TIN[SEM=short] -> 'for'
+
+PUNC -> '.' | '?'
